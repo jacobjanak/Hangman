@@ -1,5 +1,5 @@
 let word, guessed, guessesLeft, hidden;
-const words = ["jullyo", "ugly", "stupid"];
+const words = ["cat", "yurt", "locksmith", "aardvark", "village"];
 
 endRound()
 
