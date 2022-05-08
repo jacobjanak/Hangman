@@ -20,8 +20,8 @@ const contract = {
 		  	params: [{
 			  	to: this.address,
 			  	from: walletAddress,
-			  	data: this.writeAddress,
-			  	value: amount,
+			  	data: methodAddress,
+			  	value: amount.toString(16),
 			}],
 		});
 		if (callback) callback(txHash);
@@ -34,34 +34,12 @@ const contract = {
 		  	params: [{
 			  	to: this.address,
 			  	from: walletAddress,
-			  	data: this.writeAddress,
-			  	value: amount,
+			  	data: methodAddress,
+			  	value: amount.toString(16),
 			}],
 		});
 		if (callback) callback(txHash);
 	}
-
-	// Read data from the contract.
-	// read: async function(callback) {
-	// 	const text = await ethereum.request({
-	// 	  	method: 'eth_getStorageAt',
-	// 	  	params: [ this.address, '0x0' ],
-	// 	})
-	// 	if (callback) callback(text);
-	// },
-
-	// // Update the storage of the smart contract.
-	// write: async function(data, callback) {
-	// 	const txHash = await ethereum.request({
-	// 	  	method: 'eth_sendTransaction',
-	// 	  	params: [{
-	// 		  	to: this.address,
-	// 		  	from: walletAddress,
-	// 		  	data: this.writeAddress + (data || ''),
-	// 		}],
-	// 	});
-	// 	if (callback) callback(txHash);
-	// }
 };
 
 // Check if user has MetaMask installed.
