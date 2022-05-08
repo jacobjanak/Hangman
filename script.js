@@ -1,31 +1,65 @@
+// Enable all tooltips.
+$('[data-toggle="tooltip"]').tooltip();
+
+// User Ethereum wallet public address.
+let walletAddress = '';
+
 // Smart contract.
 const contract = {
-	chainId: '0x2a', // Kovan test network.
-	address: '0xacB241f59E1a8c7A61f0781aed7Ad067269feb26', // Contract public address
-	writeAddress: '0xfcc74f71', // Hex address of the write method of the contract.
-	storage: { text: null }, // Contract storage contains only bytes32 public text.
+	chainId: '0x4', // Kovan test network.
+	address: '0xEcb6f4CE53a36943B801659c9719d84eca970eD6', // Contract public address
+	// writeAddress: '0xfcc74f71', // Hex address of the write method of the contract.
+	// storage: { text: null }, // Contract storage contains only bytes32 public text.
 
-	// Read data from the contract.
-	read: async function(callback) {
-		const text = await ethereum.request({
-		  	method: 'eth_getStorageAt',
-		  	params: [ this.address, '0x0' ],
-		})
-		if (callback) callback(text);
-	},
-
-	// Update the storage of the smart contract.
-	write: async function(data, callback) {
+	buyBull: async function(amount, callback) {
+		const methodAddress = '0x349a363f';
 		const txHash = await ethereum.request({
 		  	method: 'eth_sendTransaction',
 		  	params: [{
 			  	to: this.address,
 			  	from: walletAddress,
-			  	data: this.writeAddress + (data || ''),
+			  	data: this.writeAddress,
+			  	value: amount,
 			}],
 		});
 		if (callback) callback(txHash);
 	}
+
+	buyBear: async function(amount, callback) {
+		const methodAddress = '0x0072060b';
+		const txHash = await ethereum.request({
+		  	method: 'eth_sendTransaction',
+		  	params: [{
+			  	to: this.address,
+			  	from: walletAddress,
+			  	data: this.writeAddress,
+			  	value: amount,
+			}],
+		});
+		if (callback) callback(txHash);
+	}
+
+	// Read data from the contract.
+	// read: async function(callback) {
+	// 	const text = await ethereum.request({
+	// 	  	method: 'eth_getStorageAt',
+	// 	  	params: [ this.address, '0x0' ],
+	// 	})
+	// 	if (callback) callback(text);
+	// },
+
+	// // Update the storage of the smart contract.
+	// write: async function(data, callback) {
+	// 	const txHash = await ethereum.request({
+	// 	  	method: 'eth_sendTransaction',
+	// 	  	params: [{
+	// 		  	to: this.address,
+	// 		  	from: walletAddress,
+	// 		  	data: this.writeAddress + (data || ''),
+	// 		}],
+	// 	});
+	// 	if (callback) callback(txHash);
+	// }
 }
 
 	// Prompt user to enable MetaMask through the extension.
