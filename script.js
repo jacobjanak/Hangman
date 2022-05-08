@@ -23,7 +23,7 @@ const contract = {
 			}],
 		});
 		if (callback) callback(txHash);
-	}
+	},
 
 	buyBear: async function(amount, callback) {
 		const methodAddress = '0x0072060b';
@@ -60,9 +60,14 @@ const contract = {
 	// 	});
 	// 	if (callback) callback(txHash);
 	// }
-}
+};
 
-	// Prompt user to enable MetaMask through the extension.
+// Check if user has MetaMask installed.
+function hasMetamask () {
+	return window.ethereum ? ethereum.isMetaMask : false;
+};
+
+// Prompt user to enable MetaMask through the extension.
 async function enableMetamask(callback) {
 	const accounts = await ethereum.request({
 		method: 'eth_requestAccounts'
@@ -74,7 +79,7 @@ async function enableMetamask(callback) {
 	$('#wallet-address').text(walletAddress.slice(-4));
 	$('#wallet-display').show();
 	if (callback) callback();
-}
+};
 
 async function switchChain(chainId, callback) {
 	await ethereum.request({
@@ -82,30 +87,24 @@ async function switchChain(chainId, callback) {
 		params: [{ chainId }],
 	});
 	if (callback) callback();
-}
+};
 
-	// Check if user has MetaMask installed.
-function hasMetamask () {
-	return window.ethereum ? ethereum.isMetaMask : false;
-}
-
-	// Button to prompt user to enable metamask.
-	$('#connect-wallet').on('click', function() { 
-		if (!hasMetamask()) {
-		  	window.alert("No wallet detected. Please install MetaMask or another Ethereum wallet.");
-		  	// TO DO: Create a function to run the page without metamask.
-		} else {
-			enableMetamask(function() {
-				if (ethereum.chainId != contract.chainId) {
-					switchChain(contract.chainId, function() {
-						$('#no-submit').hide();
-						$('#submit').show();
-						getContractData();
-					})
-				} else {
+// Button to prompt user to enable metamask.
+$('#connect-wallet').on('click', function() { 
+	if (!hasMetamask()) {
+	  	window.alert("No wallet detected. Please install MetaMask or another Ethereum wallet.");
+	} else {
+		enableMetamask(function() {
+			if (ethereum.chainId != contract.chainId) {
+				switchChain(contract.chainId, function() {
 					$('#no-submit').hide();
 					$('#submit').show();
-				}
-			});
-		}
-	})
+					getContractData();
+				})
+			} else {
+				$('#no-submit').hide();
+				$('#submit').show();
+			}
+		});
+	}
+});
