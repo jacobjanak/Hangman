@@ -41,7 +41,6 @@ nav {
 #wallet-display {
   display: none;  /* Hide this until user connects wallet. */
   cursor: default;
-  font-size: 1.25rem;
   color: white;
 }
 
@@ -85,7 +84,7 @@ nav {
 }
 
 #footer > div > span > a {
-  color: green;
+  color: #0d6efd;
 }
 
 /* styles for toggle switch */
@@ -100,7 +99,7 @@ label .input:checked + .toggle-wrapper {
 }
 label .input:checked + .toggle-wrapper > .selector {
   left: calc(100% - 50px);
-  background-color: green; /* green */
+  background-color: #198754; /* green */
 }
 label .input:checked ~ .notification > .selected:before {
   content: "Up";
@@ -136,4 +135,18 @@ label .notification .selected:before {
   content: "Down";
   border-bottom: 2px solid;
   font-size: 1rem;
+}
+.selector > div > i {
+  line-height: 40px;
+  font-size: 24px;
+}
+.selector > div {
+  transition: 0.25s ease; 
+}
+label .input:checked + .toggle-wrapper > .selector > div {
+  -o-transform:rotate(180deg);
+  -ms-transform:rotate(180deg);
+  -moz-transform:rotate(180deg);
+  -webkit-transform:rotate(180deg);
+  transform:rotate(180deg);
 }
