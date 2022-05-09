@@ -1,13 +1,26 @@
 body {
-  padding-top: 8px;
-  background-color: #FFEA80;
-  text-align: center;
+  background-color: #d4d4d4;
+  /*text-align: center;*/
   font-family: sans-serif;
   letter-spacing: 0.08em;
 }
 
+#page {
+  min-height: 100vh;
+  padding-top: 64px;
+  background-color: white;
+}
+
 nav {
   height: 54px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.no-padding {
+  padding: 0;
 }
 
 .a-reset {
@@ -21,7 +34,7 @@ nav {
   border-radius: 50%;
   width: 22px;
   height: 22px;
-  background: #ff6239;
+  background: #b0fbf6;
   transform: translateY(3px); /* Simple fix */ 
 }
 
@@ -36,4 +49,53 @@ nav {
 
 #dots {
   letter-spacing: 0;
+}
+
+/* styles for toggle switch */
+label {
+  pointer-events: none;
+}
+label .input {
+  display: none;
+}
+label .input:checked + .toggle-wrapper {
+  /*box-shadow: 0 8px 14px 0 rgba(18, 51, 215, 0.12);*/
+}
+label .input:checked + .toggle-wrapper > .selector {
+  left: calc(100% - 50px);
+  background-color: green; /* green */
+}
+label .input:checked ~ .notification > .selected:before {
+  content: "Up";
+}
+label .toggle-wrapper {
+  position: relative;
+  width: 120px;
+  height: 60px;
+  background-color: #eaeaea;
+  border-radius: 999px;
+  /*margin: auto;*/
+  cursor: pointer;
+  pointer-events: all;
+  /*box-shadow: 0 8px 14px 0 rgba(215, 60, 18, 0.12);*/
+}
+label .toggle-wrapper .selector {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  background-color: #ee5f39; /* red */
+  transition: left 0.25s ease;
+  border-radius: 50%;
+}
+label .notification {
+  font-size: 20px;
+  width: 100%;
+}
+label .notification .selected:before {
+  content: "Down";
+  font-size: 20px;
+  border-bottom: 2px solid;
 }

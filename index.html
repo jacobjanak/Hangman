@@ -8,12 +8,12 @@
     <title>Solidifi</title>
   </head>
   <body>
-    <div class="container">
 
-      <!-- NavBar -->
-      <nav class="navbar navbar-light mb-3">
-        <div class="container-fluid">
-          <a class="a-reset" href=".">
+    <!-- NavBar -->
+    <nav class="navbar bg-dark navbar-dark fixed-top">
+      <div class="container">
+        <div class="d-flex justify-content-between full-width">
+          <a class="a-reset align-self-center" href=".">
             <div id="circle"></div>
             <span class="navbar-brand mb-0 h1">
               Solidifi
@@ -32,19 +32,78 @@
             Connect Wallet
           </button>
         </div>
-      </nav>
+      </div>
+    </nav>
 
-      <!-- Footer -->
-      <nav class="navbar fixed-bottom navbar-light">
-        <div class="container">
-          <span>Need test ETH? <a target="_blank" href="https://rinkebyfaucet.com/">rinkebyfaucet.com</a></span>
+    <!-- Main page -->
+    <div id="page" class="container">
+      <form>
+        <div class="todo d-flex full-width">
+          <div>1.
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+              <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+            </svg>
+          </div>
+          <div class="flex-grow-1">
+            <p>Make your prediction. Will ETH's price go up or down?</p>
+            <label for="toggle">
+              <input id="toggle" class="input" type="checkbox" checked="true" />
+              <div class="toggle-wrapper"><span class="selector"></span></div>
+              <p class="notification">You have selected <span class="selected"></span></p>
+            </label>
+          </div>
         </div>
-      </nav>
+        <div class="todo d-flex full-width">
+          <div>2.</div>
+          <div class="flex-grow-1">
+            <p>Connect your wallet. You will need MetaMask or another Ethereum wallet extension installed.</p>
+            <button id="connect-wallet" class="btn btn-success">
+              Connect Wallet
+            </button>
+            <button id="wallet-connected" class="btn disabled btn-success">
+             &#10003 Wallet Connected
+            </button>
+          </div>
+        </div>
+        <div class="todo d-flex full-width">
+          <div>3.</div>
+          <div class="flex-grow-1">
+            <p>Choose how many ETH to deposit.</p>
+            <div class="input-group">
+              <input type="number" min="0" value="0" class="form-control">
+              <span class="input-group-text">ETH</span>
+            </div>
+            <div class="input-group">
+              <input class="form-control" type="number" min="0" value="0">
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                ETH
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li class="dropdown-item">ETH</li>
+                <!-- <li><hr class="dropdown-divider"></li> -->
+                <li class="dropdown-item">WEI</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="todo d-flex full-width">
+          <div>4.</div>
+          <div class="flex-grow-1">
+            <p>Send the deposit and confirm the transaction.</p>
+            <button class="btn btn-primary">
+              Make Deposit
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
 
-
-
-
+    <!-- Footer -->
+    <nav class="navbar fixed-bottom navbar-light">
+      <div class="container">
+        <span>Need test ETH? <a target="_blank" href="https://rinkebyfaucet.com/">rinkebyfaucet.com</a></span>
+      </div>
+    </nav>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
