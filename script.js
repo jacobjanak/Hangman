@@ -102,6 +102,8 @@ async function switchChain(chainId, callback) {
 	if (callback) callback();
 };
 
+// DOM stuff begins
+
 // Button to prompt user to enable metamask.
 $('.connect-wallet').on('click', function(e) {
 	e.preventDefault();
@@ -127,8 +129,28 @@ let isInWEI = false;
 $('.dropdown-item').on('click', function() {
 	const val = $(this).text();
 	$('.dropdown-toggle').text(val);
-	if (val === 'WEI') isInWEI = true;
-	else isInWEI = false;
+	if (val === 'WEI') {
+		isInWEI = true;
+		$('#eth-amount').attr('step', '1'); // can't enter fractional eth
+	}
+	else {
+		isInWEI = false;
+		$('#eth-amount').attr('step', 'any');
+	}
+})
+
+$('#deposit-form').on('submit', function(e) {
+	e.preventDefault();
+	let amount = $('#eth-amount').val();
+	if (amount > 0) {
+		if (isInWEI === false) amount *= 1e18;
+		amount = Math.floor(amount); // just in case
+		if ($('#toggle').prop('checked')) {
+			contract.buyBull(amount);
+		} else {
+			contract.buyBear(amount);
+		}
+	}
 })
 
 // Enable all tooltips.

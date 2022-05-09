@@ -24,7 +24,7 @@
             <i class="bi bi-wallet"></i>
             <span>0x<span id="dots">...</span><span id="wallet-address"></span></span>
           </span>
-          <button class="btn btn-outline-primary connect-wallet">
+          <button class="btn btn-primary connect-wallet">
             Connect Wallet
           </button>
         </div>
@@ -34,7 +34,7 @@
     <!-- Main page -->
     <div id="page" class="container">
       <div class="col-md-6 offset-md-3">
-        <form>
+        <form id="deposit-form">
           <div class="todo d-flex full-width">
             <div class="list-number">1.</div>
               <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
@@ -61,11 +61,11 @@
             <div class="list-number">2.</div>
             <div class="list-item flex-grow-1 pt-1">
               <p>Connect your wallet. You will need MetaMask or another Ethereum wallet extension installed.</p>
-              <button class="btn btn-outline-primary btn-lg connect-wallet">
+              <button class="btn btn-primary btn-lg connect-wallet">
                 Connect Wallet
               </button>
               <button id="wallet-connected" class="btn disabled btn-outline-primary btn-lg">
-               &#10003 Wallet Connected
+                <i class="bi bi-check-lg"></i> Connected
               </button>
             </div>
           </div>
@@ -78,7 +78,7 @@
                 <span class="input-group-text">ETH</span>
               </div> -->
               <div id="eth-deposit-amount" class="input-group">
-                <input class="form-control" type="number" min="0" value="0">
+                <input id="eth-amount" class="form-control" type="number" step="any" min="0" placeholder="0" required>
                 <button class="btn btn-outline-primary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown">
                   ETH
                 </button>
@@ -94,7 +94,7 @@
             <div class="list-number">4.</div>
             <div class="list-item flex-grow-1 pt-1">
               <p>Send the deposit and confirm the transaction.</p>
-              <button class="btn btn-success btn-lg">
+              <button id="deposit" class="btn btn-success btn-lg">
                 Make Deposit
               </button>
             </div>
