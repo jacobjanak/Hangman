@@ -28,6 +28,11 @@ nav {
   text-decoration: inherit; /* No underline */
 }
 
+.navbar-brand > .logo {
+  height: 18px;
+  margin: 0 3px 2px 2px;
+}
+
 #circle {
   display: inline-block;
   margin-right: 1px;
@@ -79,11 +84,11 @@ nav {
   width: 240px;
 }
 
-#footer > div > span {
+#footer > div > div > span {
   color: white;
 }
 
-#footer > div > span > a {
+#footer > div > div > span > a {
   color: #0d6efd;
 }
 
