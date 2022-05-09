@@ -39,8 +39,9 @@ nav {
 }
 
 #wallet-display {
-  display: none; /* Hide this until user connects wallet. */
+  /*display: none;  Hide this until user connects wallet. */
   cursor: default;
+  font-size: 1.25rem;
   color: white;
 }
 
