@@ -51,6 +51,37 @@ nav {
   letter-spacing: 0;
 }
 
+.list-number {
+  width: 32px;
+  margin-right: 16px;
+  font-size: 32px;
+  /*font-weight: bold;*/
+}
+
+.list-item {
+  margin-bottom: 96px;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.dropdown-item {
+  cursor: pointer;
+}
+
+#eth-deposit-amount {
+  margin-left: auto;
+  margin-right: auto;
+  width: 240px;
+}
+
+#footer > div > span {
+  color: white;
+}
+
+#footer > div > span > a {
+  color: green;
+}
+
 /* styles for toggle switch */
 label {
   pointer-events: none;
@@ -67,6 +98,7 @@ label .input:checked + .toggle-wrapper > .selector {
 }
 label .input:checked ~ .notification > .selected:before {
   content: "Up";
+  font-size: 1rem;
 }
 label .toggle-wrapper {
   position: relative;
@@ -74,7 +106,7 @@ label .toggle-wrapper {
   height: 60px;
   background-color: #eaeaea;
   border-radius: 999px;
-  /*margin: auto;*/
+  margin: auto;
   cursor: pointer;
   pointer-events: all;
   /*box-shadow: 0 8px 14px 0 rgba(215, 60, 18, 0.12);*/
@@ -91,11 +123,11 @@ label .toggle-wrapper .selector {
   border-radius: 50%;
 }
 label .notification {
-  font-size: 20px;
   width: 100%;
+  font-size: 1rem;
 }
 label .notification .selected:before {
   content: "Down";
-  font-size: 20px;
   border-bottom: 2px solid;
+  font-size: 1rem;
 }

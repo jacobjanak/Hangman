@@ -87,9 +87,10 @@ async function enableMetamask(callback) {
 	walletAddress = accounts[0];
 	
 	// Update DOM.
-	$('#connect-wallet').hide();
+	$('.connect-wallet').hide();
 	$('#wallet-address').text(walletAddress.slice(-4));
 	$('#wallet-display').show();
+	$('#wallet-connected').show()
 	if (callback) callback();
 };
 
@@ -102,7 +103,7 @@ async function switchChain(chainId, callback) {
 };
 
 // Button to prompt user to enable metamask.
-$('#connect-wallet').on('click', function() { 
+$('.connect-wallet').on('click', function() { 
 	if (!hasMetamask()) {
 	  	window.alert("No Ethereum wallet detected. Please install MetaMask.");
 	} else {
@@ -120,6 +121,14 @@ $('#connect-wallet').on('click', function() {
 		});
 	}
 });
+
+let isInWEI = false;
+$('.dropdown-item').on('click', function() {
+	const val = $(this).text();
+	$('.dropdown-toggle').text(val);
+	if (val === 'WEI') isInWEI = true;
+	else isInWEI = false;
+})
 
 // Enable all tooltips.
 $(document).ready(function() {
