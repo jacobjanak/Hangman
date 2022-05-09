@@ -103,7 +103,8 @@ async function switchChain(chainId, callback) {
 };
 
 // Button to prompt user to enable metamask.
-$('.connect-wallet').on('click', function() { 
+$('.connect-wallet').on('click', function(e) {
+	e.preventDefault();
 	if (!hasMetamask()) {
 	  	window.alert("No Ethereum wallet detected. Please install MetaMask.");
 	} else {
