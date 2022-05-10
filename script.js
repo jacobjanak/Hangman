@@ -74,6 +74,48 @@ const contract = {
 		});
 		if (callback) callback(txHash);
 	},
+
+	getTotalEth: async function(callback) {
+		const methodAddress = '0x88a01818';
+
+		const txHash = await ethereum.request({
+		  	method: 'eth_sendTransaction',
+		  	params: [{
+			  	to: this.address,
+			  	from: walletAddress,
+			  	data: methodAddress,
+			}],
+		});
+		if (callback) callback(txHash);
+	},
+
+	getBullEth: async function(callback) {
+		const methodAddress = '0x1edc46ac';
+
+		const txHash = await ethereum.request({
+		  	method: 'eth_sendTransaction',
+		  	params: [{
+			  	to: this.address,
+			  	from: walletAddress,
+			  	data: methodAddress,
+			}],
+		});
+		if (callback) callback(txHash);
+	},
+
+	getBearEth: async function(callback) {
+		const methodAddress = '0xdb4eaa5f';
+
+		const txHash = await ethereum.request({
+		  	method: 'eth_sendTransaction',
+		  	params: [{
+			  	to: this.address,
+			  	from: walletAddress,
+			  	data: methodAddress,
+			}],
+		});
+		if (callback) callback(txHash);
+	}
 };
 
 // Check if user has MetaMask installed.
@@ -195,7 +237,36 @@ $('#withdrawal-form').on('submit', function(e) {
 	}
 })
 
-// Enable all tooltips.
 $(document).ready(function() {
+	// Enable all tooltips.
 	$('[data-toggle="tooltip"]').tooltip();
+	
+	contract.getTotalEth(data => {
+		$('#total-eth').text(parseInt(data))
+	})
+
+	contract.getBullEth(bull => {
+		contract.getBearEth(bear => {
+			const bullPercent = Math.round(bull/(bull+bear)*100);
+			const bearPercent = 100-bullPercent;
+			$('#up-percent').text(bullPercent);
+			$('#down-percent').text(bullPercent);
+		})
+	})
+
+	setInterval(function() {
+		contract.getTotalEth(data => {
+			$('#total-eth').text(parseInt(data))
+		})
+
+		contract.getBullEth(bull => {
+			contract.getBearEth(bear => {
+				const bullPercent = Math.round(bull/(bull+bear)*100);
+				const bearPercent = 100-bullPercent;
+				$('#up-percent').text(bullPercent);
+				$('#down-percent').text(bullPercent);
+			})
+		})
+	}, 5*1000)
+
 });
