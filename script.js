@@ -164,12 +164,14 @@ $('#deposit-form').on('submit', function(e) {
 				contract.buyBear(amount);
 			}
 		}
+	} else {
+		window.alert("Please connect your wallet.");
 	}
 })
 
 $('#withdrawal-form').on('submit', function(e) {
 	e.preventDefault();
-	if (walletAddress === '') {
+	if (walletAddress) {
 		let numerator = parseFloat($('#percentage').val());
 		if (numerator > 0) {
 			let denominator = 100;
@@ -188,6 +190,8 @@ $('#withdrawal-form').on('submit', function(e) {
 				contract.sellBear(numerator, denominator);
 			}
 		}
+	} else {
+		window.alert("Please connect your wallet.");
 	}
 })
 
