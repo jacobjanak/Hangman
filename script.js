@@ -75,47 +75,44 @@ const contract = {
 		if (callback) callback(txHash);
 	},
 
-	// getTotalEth: async function(callback) {
-	// 	const methodAddress = '0x88a01818';
+	getTotalEth: async function(callback) {
+		const methodAddress = '0x88a01818';
 
-	// 	const txHash = await ethereum.request({
-	// 	  	method: 'eth_sendTransaction',
-	// 	  	params: [{
-	// 		  	to: this.address,
-	// 		  	from: walletAddress,
-	// 		  	data: methodAddress,
-	// 		}],
-	// 	});
-	// 	if (callback) callback(txHash);
-	// },
+		const txHash = await ethereum.request({
+		  	method: 'eth_call',
+		  	params: [{
+			  	to: this.address,
+			  	data: methodAddress,
+			}],
+		});
+		if (callback) callback(txHash);
+	},
 
-	// getBullEth: async function(callback) {
-	// 	const methodAddress = '0x1edc46ac';
+	getBullEth: async function(callback) {
+		const methodAddress = '0x1edc46ac';
 
-	// 	const txHash = await ethereum.request({
-	// 	  	method: 'eth_sendTransaction',
-	// 	  	params: [{
-	// 		  	to: this.address,
-	// 		  	from: walletAddress,
-	// 		  	data: methodAddress,
-	// 		}],
-	// 	});
-	// 	if (callback) callback(txHash);
-	// },
+		const txHash = await ethereum.request({
+		  	method: 'eth_call',
+		  	params: [{
+			  	to: this.address,
+			  	data: methodAddress,
+			}],
+		});
+		if (callback) callback(txHash);
+	},
 
-	// getBearEth: async function(callback) {
-	// 	const methodAddress = '0xdb4eaa5f';
+	getBearEth: async function(callback) {
+		const methodAddress = '0xdb4eaa5f';
 
-	// 	const txHash = await ethereum.request({
-	// 	  	method: 'eth_sendTransaction',
-	// 	  	params: [{
-	// 		  	to: this.address,
-	// 		  	from: walletAddress,
-	// 		  	data: methodAddress,
-	// 		}],
-	// 	});
-	// 	if (callback) callback(txHash);
-	// }
+		const txHash = await ethereum.request({
+		  	method: 'eth_call',
+		  	params: [{
+			  	to: this.address,
+			  	data: methodAddress,
+			}],
+		});
+		if (callback) callback(txHash);
+	}
 };
 
 // Check if user has MetaMask installed.
@@ -240,7 +237,7 @@ $('#withdrawal-form').on('submit', function(e) {
 $(document).ready(function() {
 	// Enable all tooltips.
 	$('[data-toggle="tooltip"]').tooltip();
-	
+
 	// contract.getTotalEth(data => {
 	// 	$('#total-eth').text(parseInt(data))
 	// })
