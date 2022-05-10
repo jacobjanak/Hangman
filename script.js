@@ -90,7 +90,7 @@ async function enableMetamask(callback) {
 	$('.connect-wallet').hide();
 	$('#wallet-address').text(walletAddress.slice(-4));
 	$('#wallet-display').show();
-	$('#wallet-connected').show()
+	$('.wallet-connected').show()
 	if (callback) callback();
 };
 
@@ -125,6 +125,18 @@ $('.connect-wallet').on('click', function(e) {
 	}
 });
 
+$('.switch-button-checkbox').change(function() {
+    if (this.checked) {
+    	$('.switch-button').css({ color: 'black' });
+    	$('#deposit-form').hide();
+    	$('#withdrawal-form').show()
+    } else {
+    	$('.switch-button').css({ color: 'white' });
+      $('#withdrawal-form').hide()
+      $('#deposit-form').show();
+    }
+});
+
 let isInWEI = false;
 $('.dropdown-item').on('click', function() {
 	const val = $(this).text();
@@ -141,14 +153,40 @@ $('.dropdown-item').on('click', function() {
 
 $('#deposit-form').on('submit', function(e) {
 	e.preventDefault();
-	let amount = $('#eth-amount').val();
-	if (amount > 0) {
-		if (isInWEI === false) amount *= 1e18;
-		amount = Math.floor(amount); // just in case
-		if ($('#toggle').prop('checked')) {
-			contract.buyBull(amount);
-		} else {
-			contract.buyBear(amount);
+	if (walletAddress) {
+		let amount = $('#eth-amount').val();
+		if (amount > 0) {
+			if (isInWEI === false) amount *= 1e18;
+			amount = Math.floor(amount); // just in case
+			if ($('#toggle').prop('checked')) {
+				contract.buyBull(amount);
+			} else {
+				contract.buyBear(amount);
+			}
+		}
+	}
+})
+
+$('#withdrawal-form').on('submit', function(e) {
+	e.preventDefault();
+	if (walletAddress === '') {
+		let numerator = parseFloat($('#percentage').val());
+		if (numerator > 0) {
+			let denominator = 100;
+			// convert floats to int while scaling denominator
+			for (let i = 0; i < 16; i++) {
+				if (Math.floor(numerator) !== numerator) {
+					numerator *= 10;
+					denominator *= 10;
+				} else break;
+			}
+			numerator = Math.floor(numerator);
+			if ($('#pool-select').val() === 'up') {
+				contract.sellBull(numerator, denominator);
+			}
+			else if ($('#pool-select').val() === 'down') {
+				contract.sellBear(numerator, denominator);
+			}
 		}
 	}
 })

@@ -33,16 +33,6 @@ nav {
   margin: 0 3px 2px 2px;
 }
 
-#circle {
-  display: inline-block;
-  margin-right: 1px;
-  border-radius: 50%;
-  width: 22px;
-  height: 22px;
-  background: #b0fbf6;
-  transform: translateY(3px); /* Simple fix */ 
-}
-
 #wallet-display {
   display: none;  /* Hide this until user connects wallet. */
   cursor: default;
@@ -57,9 +47,13 @@ nav {
   letter-spacing: 0;
 }
 
+#withdrawal-form {
+  display: none;
+}
+
 .list-number {
   width: 32px;
-  margin-right: 16px;
+  margin-right: 24px;
   font-size: 32px;
   /*font-weight: bold;*/
 }
@@ -67,10 +61,10 @@ nav {
 .list-item {
   margin-bottom: 96px;
   text-align: center;
-  font-size: 1.2em;
+  /*font-size: 1.2em;*/
 }
 
-#wallet-connected {
+.wallet-connected {
   display: none; /* Hide this until user connects wallet. */
 }
 
@@ -78,10 +72,10 @@ nav {
   cursor: pointer;
 }
 
-#eth-deposit-amount {
+.fixed-width-input {
+  width: 240px;
   margin-left: auto;
   margin-right: auto;
-  width: 240px;
 }
 
 #footer > div > div > span {
@@ -89,10 +83,85 @@ nav {
 }
 
 #footer > div > div > span > a {
-  color: #0d6efd;
+  color: #ffc107;
 }
 
-/* styles for toggle switch */
+/* deposit/withdraw toggle */
+.switch-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.switch-button {
+  /*background: rgba(0, 0, 0, 1);*/
+  border-radius: 999px;
+  overflow: hidden;
+  width: 240px;
+  text-align: center;
+  /*font-size: 18px;*/
+  /*letter-spacing: 1px;*/
+  color: white;
+  position: relative;
+  padding-right: 120px;
+  position: relative;
+}
+.switch-button:before {
+  content: "Withdraw";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  pointer-events: none;
+  /* makes it the opposite color of .switch-button */
+  -webkit-filter: invert(100%);
+  filter: invert(100%);  
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.switch-button-checkbox {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 2;
+}
+.switch-button-checkbox:checked + .switch-button-label:before {
+  transform: translateX(120px);
+  transition: transform .25s ease;
+}
+.switch-button-checkbox + .switch-button-label {
+  position: relative;
+  padding: 12px 0;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+.switch-button-checkbox + .switch-button-label:before {
+  content: "";
+  background: #0d6efd;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 30px;
+  transform: translateX(0);
+  transition: transform .25s ease;
+}
+.switch-button-checkbox + .switch-button-label .switch-button-label-span {
+  position: relative;
+}
+
+/* up/down toggle */
 label {
   pointer-events: none;
 }
