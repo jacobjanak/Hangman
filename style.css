@@ -1,3 +1,12 @@
+@font-face {
+  font-family: numbers;
+  src: url(digital-7.regular.ttf);
+}
+
+.numbers {
+  font-family: numbers;
+}
+
 body {
   background-color: #d4d4d4;
   /*text-align: center;*/
@@ -31,6 +40,11 @@ nav {
 .navbar-brand > .logo {
   height: 18px;
   margin: 0 3px 2px 2px;
+}
+
+.big-logo {
+  height: 72px;
+  margin: 0 10px 16px 6px;
 }
 
 #wallet-display {
@@ -224,3 +238,21 @@ label .input:checked + .toggle-wrapper > .selector > div {
   -webkit-transform:rotate(180deg);
   transform:rotate(180deg);
 }
+
+/*Breakpoints*/
+@media (max-width: 767.98px) {
+  .list-number {
+    position: absolute;
+  }
+  .list-item {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  #footer {
+    height: 128px;
+  }
+}
+
