@@ -1,7 +1,7 @@
 let i, u = 0;
 let price = 3000;
 const users = [];
-let maxRatio = 4; // pool up:down ratio
+// let maxRatio = 4; // pool up:down ratio
 
 // contract attributes
 const c = {
@@ -28,9 +28,9 @@ $('button.buy-ethup').on('click', () => {
 	if (amount > users[u].eth) return;
 	$('input.buy-ethup').val('');
 	updateDivider();
-	if (c.eth !== c.divider && c.divider !== 0) {
-		if ((c.eth+amount-c.divider)/c.divider > maxRatio) return;
-	}
+	// if (c.eth !== c.divider && c.divider !== 0) {
+	// 	if ((c.eth+amount-c.divider)/c.divider > maxRatio) return;
+	// }
 	if (c.ethup === 0) {
 		c.ethup++;
 		users[u].ethup++;
@@ -54,9 +54,9 @@ $('button.sell-ethup').on('click', () => {
 	updateDivider();
 	const ratio = amount / c.ethup;
 	const ethAmount = (c.eth - c.divider) * ratio;
-	if (c.eth !== c.divider && c.divider !== 0) {
-		if (c.divider/(c.eth-ethAmount-c.divider) > maxRatio) return;
-	}
+	// if (c.eth !== c.divider && c.divider !== 0) {
+	// 	if (c.divider/(c.eth-ethAmount-c.divider) > maxRatio) return;
+	// }
 	users[u].eth += ethAmount;
 	c.eth -= ethAmount;
 	users[u].ethup -= amount;
@@ -72,9 +72,9 @@ $('button.buy-ethdown').on('click', () => {
 	if (amount > users[u].eth) return;
 	$('input.buy-ethdown').val('');
 	updateDivider();
-	if (c.eth !== c.divider && c.divider !== 0) {
-		if ((c.divider+amount)/(c.eth-c.divider) > maxRatio) return;
-	}
+	// if (c.eth !== c.divider && c.divider !== 0) {
+	// 	if ((c.divider+amount)/(c.eth-c.divider) > maxRatio) return;
+	// }
 	if (c.ethdown === 0) {
 		c.ethdown++;
 		users[u].ethdown++;
@@ -99,9 +99,9 @@ $('button.sell-ethdown').on('click', () => {
 	updateDivider();
 	const ratio = amount / c.ethdown;
 	const ethAmount = c.divider * ratio;
-	if (c.eth !== c.divider && c.divider !== 0) {
-		if ((c.eth-c.divider)/(c.divider-ethAmount) > maxRatio) return;
-	}
+	// if (c.eth !== c.divider && c.divider !== 0) {
+	// 	if ((c.eth-c.divider)/(c.divider-ethAmount) > maxRatio) return;
+	// }
 	users[u].eth += ethAmount;
 	c.eth -= ethAmount;
 	users[u].ethdown -= amount;
