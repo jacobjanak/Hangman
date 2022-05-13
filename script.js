@@ -19,6 +19,7 @@ const contract = {
 			}],
 		});
 		if (callback) callback(txHash);
+		loadContractData();
 	},
 
 	buyBear: async function(amount, callback) {
@@ -33,6 +34,7 @@ const contract = {
 			}],
 		});
 		if (callback) callback(txHash);
+		loadContractData();
 	},
 
 	sellBull: async function(numerator, denominator, callback) {
@@ -53,6 +55,7 @@ const contract = {
 			}],
 		});
 		if (callback) callback(txHash);
+		loadContractData();
 	},
 
 	sellBear: async function(numerator, denominator, callback) {
@@ -73,6 +76,7 @@ const contract = {
 			}],
 		});
 		if (callback) callback(txHash);
+		loadContractData();
 	},
 
 	getTotalEth: async function(callback) {
@@ -234,36 +238,26 @@ $('#withdrawal-form').on('submit', function(e) {
 	}
 })
 
+// calls get requests of contract to get data
+function loadContractData() {
+	contract.getTotalEth(data => {
+		$('#total-eth').text(parseInt(data))
+	})
+
+	contract.getBullEth(bull => {
+		contract.getBearEth(bear => {
+			const bullPercent = Math.round(bull/(bull+bear)*100);
+			const bearPercent = 100-bullPercent;
+			$('#up-percent').text(bullPercent);
+			$('#down-percent').text(bullPercent);
+		})
+	})
+}
+
 $(document).ready(function() {
 	// Enable all tooltips.
 	$('[data-toggle="tooltip"]').tooltip();
 
-	// contract.getTotalEth(data => {
-	// 	$('#total-eth').text(parseInt(data))
-	// })
-
-	// contract.getBullEth(bull => {
-	// 	contract.getBearEth(bear => {
-	// 		const bullPercent = Math.round(bull/(bull+bear)*100);
-	// 		const bearPercent = 100-bullPercent;
-	// 		$('#up-percent').text(bullPercent);
-	// 		$('#down-percent').text(bullPercent);
-	// 	})
-	// })
-
-	// setInterval(function() {
-	// 	contract.getTotalEth(data => {
-	// 		$('#total-eth').text(parseInt(data))
-	// 	})
-
-	// 	contract.getBullEth(bull => {
-	// 		contract.getBearEth(bear => {
-	// 			const bullPercent = Math.round(bull/(bull+bear)*100);
-	// 			const bearPercent = 100-bullPercent;
-	// 			$('#up-percent').text(bullPercent);
-	// 			$('#down-percent').text(bullPercent);
-	// 		})
-	// 	})
-	// }, 5*1000)
-
+	// get total eth amount from contract
+	loadContractData();
 });
