@@ -83,8 +83,8 @@ const contract = {
 		  	params: [{
 			  	to: this.address,
 			  	data: methodAddress,
-			}],
-		}, 'latest');
+			}, 'latest'],
+		});
 		if (callback) callback(txHash);
 	},
 
@@ -96,8 +96,8 @@ const contract = {
 		  	params: [{
 			  	to: this.address,
 			  	data: methodAddress,
-			}],
-		}, 'latest');
+			}, 'latest'],
+		});
 		if (callback) callback(txHash);
 	},
 
@@ -109,8 +109,8 @@ const contract = {
 		  	params: [{
 			  	to: this.address,
 			  	data: methodAddress,
-			}],
-		}, 'latest');
+			}, 'latest'],
+		});
 		if (callback) callback(txHash);
 	}
 };
