@@ -260,9 +260,18 @@ label .input:checked + .toggle-wrapper > .selector > div {
 }
 
 /*Breakpoints*/
-@media (max-width: 575.98px) {
+@media (max-width: 767.98px) {
   #footer {
     height: 128px;
+    text-align: center;
+  }
+
+  #footer > div > .d-flex {
+    flex-direction: column;
+  }
+
+  #left-footer-section {
+    margin-bottom: 18px;
   }
 }
 
