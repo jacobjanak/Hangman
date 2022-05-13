@@ -245,7 +245,9 @@ function loadContractData() {
 	})
 
 	contract.getBullEth(bull => {
+		bull = parseInt(bull);
 		contract.getBearEth(bear => {
+			bear = parseInt(bear);
 			const bullPercent = Math.round(bull/(bull+bear)*100);
 			const bearPercent = 100-bullPercent;
 			$('#up-percent').text(bullPercent);
