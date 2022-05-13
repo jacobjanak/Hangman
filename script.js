@@ -251,7 +251,7 @@ function loadContractData() {
 			const bullPercent = Math.round(bull/(bull+bear)*100);
 			const bearPercent = 100-bullPercent;
 			$('#up-percent').text(bullPercent);
-			$('#down-percent').text(bullPercent);
+			$('#down-percent').text(bearPercent);
 		})
 	})
 }
