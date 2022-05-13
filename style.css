@@ -244,6 +244,7 @@ label .notification .selected:before {
   font-size: 1rem;
 }
 .selector > div > i {
+  margin-left: 2px;
   line-height: 40px;
   font-size: 24px;
 }
@@ -259,14 +260,6 @@ label .input:checked + .toggle-wrapper > .selector > div {
 }
 
 /*Breakpoints*/
-  .list-number {
-    /*position: absolute;*/
-  }
-  .list-item {
-    /*margin-left: 10%;*/
-    /*margin-right: 10%;*/
-  }
-
 @media (max-width: 575.98px) {
   #footer {
     height: 128px;

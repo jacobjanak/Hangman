@@ -84,7 +84,7 @@ const contract = {
 			  	to: this.address,
 			  	data: methodAddress,
 			}],
-		});
+		}, 'latest');
 		if (callback) callback(txHash);
 	},
 
@@ -97,7 +97,7 @@ const contract = {
 			  	to: this.address,
 			  	data: methodAddress,
 			}],
-		});
+		}, 'latest');
 		if (callback) callback(txHash);
 	},
 
@@ -110,7 +110,7 @@ const contract = {
 			  	to: this.address,
 			  	data: methodAddress,
 			}],
-		});
+		}, 'latest');
 		if (callback) callback(txHash);
 	}
 };
