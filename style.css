@@ -7,6 +7,10 @@
   font-family: numbers;
 }
 
+.mb-6 {
+  margin-bottom: 120px;
+}
+
 body {
   background-color: #d4d4d4;
   /*text-align: center;*/
@@ -37,13 +41,17 @@ nav {
   text-decoration: inherit; /* No underline */
 }
 
+.navbar-brand {
+  margin-right: 0px;
+}
+
 .navbar-brand > .logo {
   height: 18px;
   margin: 0 3px 2px 2px;
 }
 
 .big-logo {
-  height: 72px;
+  height: 64px;
   margin: 0 10px 16px 6px;
 }
 
@@ -61,6 +69,12 @@ nav {
   letter-spacing: 0;
 }
 
+#deposit-withdraw-container {
+  margin: auto;
+  width: 480px;
+  max-width: 100%;
+}
+
 #withdrawal-form {
   display: none;
 }
@@ -74,8 +88,13 @@ nav {
 
 .list-item {
   margin-bottom: 96px;
+  margin-right: 24px;
   text-align: center;
   /*font-size: 1.2em;*/
+}
+
+.list-item-spacer {
+  width: 32px;
 }
 
 .wallet-connected {
@@ -92,12 +111,12 @@ nav {
   margin-right: auto;
 }
 
-#footer > div > div > span {
+#footer {
   color: white;
 }
 
 #footer > div > div > span > a {
-  color: #ffc107;
+  color: white;
 }
 
 /* deposit/withdraw toggle */
@@ -240,15 +259,13 @@ label .input:checked + .toggle-wrapper > .selector > div {
 }
 
 /*Breakpoints*/
-@media (max-width: 767.98px) {
   .list-number {
-    position: absolute;
+    /*position: absolute;*/
   }
   .list-item {
-    margin-left: 10%;
-    margin-right: 10%;
+    /*margin-left: 10%;*/
+    /*margin-right: 10%;*/
   }
-}
 
 @media (max-width: 575.98px) {
   #footer {

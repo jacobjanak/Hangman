@@ -38,26 +38,26 @@
     <div id="page" class="container">
       <div class="row">
 
-        <div class="col-md-6 mb-5 text-center">
-          <h1 class="display-2">
+        <div id="banner-container" class="text-center mb-6">
+          <h1 class="display-1 mb-5">
             SOLIDI<img class="big-logo" src="./eth.png" />FI
           </h1>
-          <h4>DeFi meets leverage.</h4>
-          <h4>Anti-liquidation.</h4>
-          <h4>Built with Solidity.</h4>
-          <h1 class="display-3 numbers mt-5 mb-0">
+          <h5>DeFi meets leverage.</h5>
+          <h5>Anti-liquidation.</h5>
+          <h5 class="mb-6">Built with Solidity.</h5>
+          <h1 class="display-3 numbers mb-0">
             <span id="total-eth">123</span> WEI
           </h1>
-          <h4>Total in contract</h4>
+          <h5>Total in contract</h5>
           <h1 class="display-6 numbers">
             [ <span id="up-percent">51</span>% UP <span id="down-percent">49</span>% DOWN ]
           </h1>
         </div>
 
-        <div class="col-md-6 col-lg-4 offset-lg-1">
+        <div id="deposit-withdraw-container">
 
           <!-- Deposit/withdraw switch -->
-          <div class="todo d-flex full-width">
+          <div class="todo d-flex justify-content-center">
             <div class="list-number"></div>
             <div class="list-item flex-grow-1 pt-1" style="margin-bottom: 48px">
               <h1 class="display-6 mb-3">Getting Started</h1>
@@ -70,12 +70,13 @@
                 </div>
               </div>
             </div>
+            <div class="list-item-spacer"></div>
           </div>
 
           <!-- Deposit -->
           <form id="deposit-form">
             <!-- 1 -->
-            <div class="todo d-flex full-width">
+            <div class="todo d-flex justify-content-center">
               <div class="list-number">1.</div>
               <div class="list-item flex-grow-1 pt-1">
                 <p class="mb-4">Make your prediction. Will ETH's price go up or down?</p>
@@ -89,13 +90,16 @@
                         </div>
                       </span>
                     </div>
-                    <p class="notification mt-2 mb-0">You have selected <span class="selected"></span></p>
+                    <p class="notification mt-2 mb-0">
+                      You have selected <span class="selected"></span>
+                    </p>
                   </label>
                 </div>
               </div>
+              <div class="list-item-spacer"></div>
             </div>
             <!-- 2 -->
-            <div class="todo d-flex full-width">
+            <div class="todo d-flex justify-content-center">
               <div class="list-number">2.</div>
               <div class="list-item flex-grow-1 pt-1">
                 <p>Connect your wallet.</p>
@@ -106,9 +110,10 @@
                   <i class="bi bi-check-lg"></i> Connected
                 </button>
               </div>
+              <div class="list-item-spacer"></div>
             </div>
             <!-- 3 -->
-            <div class="todo d-flex full-width">
+            <div class="todo d-flex justify-content-center">
               <div class="list-number">3.</div>
               <div class="list-item flex-grow-1 pt-1">
                 <p>Choose how much to deposit.</p>
@@ -124,9 +129,10 @@
                   </ul>
                 </div>
               </div>
+              <div class="list-item-spacer"></div>
             </div>
             <!-- 4 -->
-            <div class="todo d-flex full-width">
+            <div class="todo d-flex justify-content-center">
               <div class="list-number">4.</div>
               <div class="list-item flex-grow-1 pt-1">
                 <p>Approve the transaction.</p>
@@ -134,13 +140,14 @@
                   Make Deposit
                 </button>
               </div>
+              <div class="list-item-spacer"></div>
             </div>
           </form>
 
           <!-- Withdrawal -->
           <form id="withdrawal-form">
             <!-- 1 -->
-            <div class="todo d-flex full-width">
+            <div class="todo d-flex justify-content-center">
               <div class="list-number">1.</div>
               <div class="list-item flex-grow-1 pt-1">
                 <p>Connect your wallet.</p>
@@ -151,9 +158,10 @@
                   <i class="bi bi-check-lg"></i> Connected
                 </button>
               </div>
+              <div class="list-item-spacer"></div>
             </div>
             <!-- 2 -->
-            <div class="todo d-flex full-width">
+            <div class="todo d-flex justify-content-center">
               <div class="list-number">2.</div>
               <div class="list-item flex-grow-1 pt-1">
                 <p>Select which pool to withdraw from.</p>
@@ -164,9 +172,10 @@
                   </select>
                 </div>
               </div>
+              <div class="list-item-spacer"></div>
             </div>
             <!-- 4 -->
-            <div class="todo d-flex full-width">
+            <div class="todo d-flex justify-content-center">
               <div class="list-number">3.</div>
               <div class="list-item flex-grow-1 pt-1">
                 <p>Select percentage of ETH to withdraw.</p>
@@ -175,9 +184,10 @@
                   <span class="input-group-text">%</span>
                 </div>
               </div>
+              <div class="list-item-spacer"></div>
             </div>
             <!-- 4 -->
-            <div class="todo d-flex full-width">
+            <div class="todo d-flex justify-content-center">
               <div class="list-number">4.</div>
               <div class="list-item flex-grow-1 pt-1">
                 <p>Approve the transaction.</p>
@@ -185,6 +195,7 @@
                   Make Withdrawal
                 </button>
               </div>
+              <div class="list-item-spacer"></div>
             </div>
           </form>
         </div>
