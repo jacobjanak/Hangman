@@ -87,7 +87,7 @@ const contract = {
 		  	params: [{
 			  	to: this.address,
 			  	data: methodAddress,
-			}, 'latest'],
+			}, 'pending'],
 		});
 		if (callback) callback(txHash);
 	},
@@ -100,7 +100,7 @@ const contract = {
 		  	params: [{
 			  	to: this.address,
 			  	data: methodAddress,
-			}, 'latest'],
+			}, 'pending'],
 		});
 		if (callback) callback(txHash);
 	},
@@ -113,7 +113,7 @@ const contract = {
 		  	params: [{
 			  	to: this.address,
 			  	data: methodAddress,
-			}, 'latest'],
+			}, 'pending'],
 		});
 		if (callback) callback(txHash);
 	}
@@ -186,13 +186,13 @@ $('.dropdown-item').on('click', function() {
 	$('.dropdown-toggle').text(val);
 	if (val === 'WEI') {
 		isInWEI = true;
-		$('#eth-amount').attr('step', '1'); // can't enter fractional eth
+		$('#eth-amount').attr('step', '1'); // can't enter fractional wei
 	}
 	else {
 		isInWEI = false;
 		$('#eth-amount').attr('step', 'any');
 	}
-})
+});
 
 $('#deposit-form').on('submit', function(e) {
 	e.preventDefault();
@@ -210,7 +210,7 @@ $('#deposit-form').on('submit', function(e) {
 	} else {
 		window.alert("Please connect your wallet.");
 	}
-})
+});
 
 $('#withdrawal-form').on('submit', function(e) {
 	e.preventDefault();
@@ -236,25 +236,44 @@ $('#withdrawal-form').on('submit', function(e) {
 	} else {
 		window.alert("Please connect your wallet.");
 	}
-})
+});
 
 // calls get requests of contract to get data
-function loadContractData() {
-	contract.getTotalEth(data => {
-		$('#total-eth').text(parseInt(data))
-	})
-
-	contract.getBullEth(bull => {
-		bull = parseInt(bull);
-		contract.getBearEth(bear => {
-			bear = parseInt(bear);
-			const bullPercent = Math.round(bull/(bull+bear)*100);
+function loadContractData(animate = false) {
+	contract.getTotalEth(total => {
+		contract.getBullEth(bull => {
+			total = parseInt(total);
+			bull = parseInt(bull);
+			const bullPercent = Math.round(bull/total*100);
 			const bearPercent = 100-bullPercent;
-			$('#up-percent').text(bullPercent);
-			$('#down-percent').text(bearPercent);
-		})
-	})
-}
+			if (!animate) {
+				$('#total-eth').text(total);
+				$('#up-percent').text(bullPercent);
+				$('#down-percent').text(bearPercent);
+
+			// increasing number animation
+			} else {
+				let i = 0;
+				let isTotalDone = false;
+				let isPercentDone = false;
+				const interval = setInterval(() => {
+					console.log('interval')
+					if (isTotalDone && isPercentDone) clearInterval(interval);
+					else if (!isTotalDone) {
+						$('#total-eth').text(Math.round(total/30*i));
+						if (i === 30) isTotalDone = true;
+						else i++;
+					} else {
+						$('#up-percent').text(Math.round(bullPercent/30*i));
+						$('#down-percent').text(Math.round(bearPercent/30*i));
+						if (i === 30) isPercentDone = true;
+						else i++;
+					}
+				}, 100)
+			}
+		});
+	});
+};
 
 $(document).ready(function() {
 	// Enable all tooltips.
