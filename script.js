@@ -280,5 +280,5 @@ $(document).ready(function() {
 	$('[data-toggle="tooltip"]').tooltip();
 
 	// get total eth amount from contract
-	loadContractData();
+	loadContractData(true);
 });
