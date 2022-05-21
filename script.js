@@ -260,16 +260,19 @@ function loadContractData(animate = false) {
 					console.log('interval')
 					if (isTotalDone && isPercentDone) clearInterval(interval);
 					else if (!isTotalDone) {
-						$('#total-eth').text(Math.round(total/30*i));
-						if (i === 30) isTotalDone = true;
+						$('#total-eth').text(Math.round(total/10*Math.sqrt(i)));
+						if (i === 100) {
+							isTotalDone = true;
+							i = 0;
+						}
 						else i++;
 					} else {
-						$('#up-percent').text(Math.round(bullPercent/30*i));
-						$('#down-percent').text(Math.round(bearPercent/30*i));
-						if (i === 30) isPercentDone = true;
+						$('#up-percent').text(Math.round(bullPercent/10*Math.sqrt(i)));
+						$('#down-percent').text(Math.round(bearPercent/10*Math.sqrt(i)));
+						if (i === 100) isPercentDone = true;
 						else i++;
 					}
-				}, 100)
+				}, 25)
 			}
 		});
 	});
