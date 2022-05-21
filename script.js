@@ -260,8 +260,8 @@ function loadContractData(animate = false) {
 					console.log('interval')
 					if (isTotalDone && isPercentDone) clearInterval(interval);
 					else if (!isTotalDone) {
-						$('#total-eth').text(Math.round(total/10*Math.sqrt(i)));
-						if (i === 100) {
+						$('#total-eth').text(Math.round(total/14*Math.sqrt(i)));
+						if (i === 196) {
 							isTotalDone = true;
 							i = 0;
 						}
