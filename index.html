@@ -36,31 +36,37 @@
 
     <!-- Main page -->
     <div id="page" class="container">
-      <div class="row">
 
-        <div id="banner-container" class="text-center mb-6">
-          <h1 class="display-1 mb-5">
-            SOLIDI<img class="big-logo" src="./eth.png" />FI
-          </h1>
-          <h5>DeFi meets leverage.</h5>
-          <h5>Anti-liquidation.</h5>
-          <h5 class="mb-6">Built with Solidity.</h5>
-          <h1 class="display-3 numbers mb-0">
-            <span id="total-eth">???</span> WEI
-          </h1>
-          <h5>Total in contract</h5>
-          <h1 class="display-6 numbers">
-            [ <span id="up-percent">??</span>% UP <span id="down-percent">??</span>% DOWN ]
-          </h1>
-        </div>
+      <!-- Logo -->
+      <div class="row text-center pb-5">
+        <h1 class="display-1 mb-5">
+          SOLIDI<img class="big-logo" src="./eth.png" />FI
+        </h1>
+        <h5>DeFi meets leverage.</h5>
+        <h5>Anti-liquidation.</h5>
+        <h5>Built with Solidity.</h5>
+      </div>
 
+      <!-- Contract stats -->
+      <div class="row dark-row text-center pt-5 pb-5">
+        <h1 class="display-3 numbers mb-0">
+          <span id="total-eth">???</span> WEI
+        </h1>
+        <h5>Total in contract</h5>
+        <h1 class="display-6 numbers">
+          [ <span id="up-percent">??</span>% UP <span id="down-percent">??</span>% DOWN ]
+        </h1>
+      </div>
+
+      <!-- Deposit/withdraw form -->
+      <div class="row pt-5">
         <div id="deposit-withdraw-container">
 
           <!-- Deposit/withdraw switch -->
           <div class="todo d-flex justify-content-center">
             <div class="list-number"></div>
             <div class="list-item flex-grow-1 pt-1" style="margin-bottom: 48px">
-              <h1 class="display-6 mb-3">Getting Started</h1>
+              <h1 class="display-6 mb-4">Getting Started</h1>
               <div class="switch-container">
                 <div class="switch-button">
                   <input class="switch-button-checkbox" type="checkbox"></input>

@@ -7,8 +7,14 @@
   font-family: numbers;
 }
 
-.mb-6 {
-  margin-bottom: 120px;
+.pt-6 { padding-top: 120px; }
+.pb-6 { padding-bottom: 120px; }
+.mt-6 { margin-top: 120px; }
+.mb-6 { margin-bottom: 120px; }
+
+.dark-row {
+  background-color: black;
+  color: white;
 }
 
 body {
