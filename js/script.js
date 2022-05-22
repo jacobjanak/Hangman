@@ -155,6 +155,7 @@ $('.connect-wallet').on('click', function(e) {
 	} else {
 		enableMetamask(function() {
 			$('.wallet-connected').attr('title', walletAddress);
+			$('[data-toggle="tooltip"]').tooltip();
 			if (ethereum.chainId != contract.chainId) {
 				switchChain(contract.chainId, function() {
 					$('#no-submit').hide();
