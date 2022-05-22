@@ -157,7 +157,8 @@ $('.connect-wallet').on('click', function(e) {
 
 			// add address as tooltip
 			$('.address-tooltip').attr('title', walletAddress);
-			$('[data-bs-toggle="tooltip"]').tooltip();
+			$('.address-tooltip').attr('data-bs-original-title', walletAddress);
+			$('.address-tooltip').tooltip();
 
 			if (ethereum.chainId != contract.chainId) {
 				switchChain(contract.chainId, function() {
@@ -284,7 +285,7 @@ function loadContractData(animate = false) {
 
 $(document).ready(function() {
 	// Enable all tooltips.
-	$('[data-bs-toggle="tooltip"]').tooltip();
+	// $('[data-bs-toggle="tooltip"]').tooltip();
 
 	// get total eth amount from contract
 	loadContractData(true);
