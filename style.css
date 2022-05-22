@@ -7,13 +7,13 @@
   font-family: numbers;
 }
 
-.pt-6 { padding-top: 120px; }
-.pb-6 { padding-bottom: 120px; }
-.mt-6 { margin-top: 120px; }
-.mb-6 { margin-bottom: 120px; }
+.pt-6 { padding-top: 96px; }
+.pb-6 { padding-bottom: 96px; }
+.mt-6 { margin-top: 96px; }
+.mb-6 { margin-bottom: 96px; }
 
 .dark-row {
-  background-color: black;
+  background-color: rgb(33,37,41);
   color: white;
 }
 
@@ -26,7 +26,7 @@ body {
 
 #page {
   min-height: 100vh;
-  padding-top: 64px;
+  /*padding-top: 64px;*/
   background-color: white;
 }
 
