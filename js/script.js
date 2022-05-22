@@ -154,8 +154,8 @@ $('.connect-wallet').on('click', function(e) {
 	  	window.alert("No Ethereum wallet detected. Please install MetaMask.");
 	} else {
 		enableMetamask(function() {
-			$('.wallet-connected').attr('title', walletAddress);
-			$('[data-toggle="tooltip"]').tooltip();
+			$('.address-tooltip').attr('title', walletAddress);
+			// $('[data-toggle="tooltip"]').tooltip();
 			if (ethereum.chainId != contract.chainId) {
 				switchChain(contract.chainId, function() {
 					$('#no-submit').hide();
@@ -259,7 +259,6 @@ function loadContractData(animate = false) {
 				let isTotalDone = false;
 				let isPercentDone = false;
 				const interval = setInterval(() => {
-					console.log('interval')
 					if (isTotalDone && isPercentDone) clearInterval(interval);
 					else if (!isTotalDone) {
 						$('#total-eth').text(Math.round(total/10*Math.sqrt(i)));
