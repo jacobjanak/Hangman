@@ -280,7 +280,7 @@ function loadContractData(animate = false) {
 
 $(document).ready(function() {
 	// Enable all tooltips.
-	$('[data-toggle="tooltip"]').tooltip();
+	$('[data-bs-toggle="tooltip"]').tooltip();
 
 	// get total eth amount from contract
 	loadContractData(true);
