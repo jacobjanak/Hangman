@@ -121,7 +121,7 @@ const contract = {
 
 // Check if user has MetaMask installed.
 function hasMetamask () {
-	return window.ethereum ? ethereum.isMetaMask : false;
+	return !!window.ethereum;
 };
 
 // Prompt user to enable MetaMask through the extension.
@@ -288,5 +288,9 @@ $(document).ready(function() {
 	// $('[data-bs-toggle="tooltip"]').tooltip();
 
 	// get total eth amount from contract
-	loadContractData(true);
+	if (hasMetamask()) {
+		loadContractData(true);
+	} else {
+		$('.alert').show();
+	}
 });

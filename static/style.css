@@ -7,6 +7,13 @@
   font-family: numbers;
 }
 
+body {
+  background-color: #d4d4d4;
+  /*text-align: center;*/
+  font-family: sans-serif;
+  letter-spacing: 0.08em;
+}
+
 .pt-6 { padding-top: 96px; }
 .pb-6 { padding-bottom: 96px; }
 .mt-6 { margin-top: 96px; }
@@ -17,11 +24,8 @@
   color: white;
 }
 
-body {
-  background-color: #d4d4d4;
-  /*text-align: center;*/
-  font-family: sans-serif;
-  letter-spacing: 0.08em;
+.alert {
+  display: none;
 }
 
 #page {
