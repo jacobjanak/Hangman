@@ -154,7 +154,11 @@ $('.connect-wallet').on('click', function(e) {
 	  	window.alert("No Ethereum wallet detected. Please install MetaMask.");
 	} else {
 		enableMetamask(function() {
+
+			// add address as tooltip
 			$('.address-tooltip').attr('title', walletAddress);
+			$('[data-bs-toggle="tooltip"]').tooltip();
+
 			if (ethereum.chainId != contract.chainId) {
 				switchChain(contract.chainId, function() {
 					$('#no-submit').hide();
