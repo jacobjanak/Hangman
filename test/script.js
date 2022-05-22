@@ -1,7 +1,10 @@
 let i, u = 0;
 let price = 3000;
 const users = [];
-// let maxRatio = 4; // pool up:down ratio
+
+// liquidation protection
+let enableProtection = false;
+let maxRatio = 4; // maximum pool up:down ratio
 
 // contract attributes
 const c = {
@@ -28,9 +31,14 @@ $('button.buy-ethup').on('click', () => {
 	if (amount > users[u].eth) return;
 	$('input.buy-ethup').val('');
 	updateDivider();
-	// if (c.eth !== c.divider && c.divider !== 0) {
-	// 	if ((c.eth+amount-c.divider)/c.divider > maxRatio) return;
-	// }
+	if (enableProtection) {
+		if (c.eth !== c.divider && c.divider !== 0) {
+			if ((c.eth+amount-c.divider)/c.divider > maxRatio) {
+				window.alert("This deposit has been prevented because it would cause the pool to exceed the maximum ratio.")
+				return;
+			}
+		}
+	}
 	if (c.ethup === 0) {
 		c.ethup++;
 		users[u].ethup++;
@@ -54,9 +62,14 @@ $('button.sell-ethup').on('click', () => {
 	updateDivider();
 	const ratio = amount / c.ethup;
 	const ethAmount = (c.eth - c.divider) * ratio;
-	// if (c.eth !== c.divider && c.divider !== 0) {
-	// 	if (c.divider/(c.eth-ethAmount-c.divider) > maxRatio) return;
-	// }
+	if (enableProtection) {
+		if (c.eth !== c.divider && c.divider !== 0) {
+			if (c.divider/(c.eth-ethAmount-c.divider) > maxRatio) {
+				window.alert("This withdrawal has been prevented because it would cause the pool to exceed the maximum ratio.")
+				return;
+			}
+		}
+	}
 	users[u].eth += ethAmount;
 	c.eth -= ethAmount;
 	users[u].ethup -= amount;
@@ -72,9 +85,14 @@ $('button.buy-ethdown').on('click', () => {
 	if (amount > users[u].eth) return;
 	$('input.buy-ethdown').val('');
 	updateDivider();
-	// if (c.eth !== c.divider && c.divider !== 0) {
-	// 	if ((c.divider+amount)/(c.eth-c.divider) > maxRatio) return;
-	// }
+	if (enableProtection) {
+		if (c.eth !== c.divider && c.divider !== 0) {
+			if ((c.divider+amount)/(c.eth-c.divider) > maxRatio) {
+				window.alert("This deposit has been prevented because it would cause the pool to exceed the maximum ratio.")
+				return;
+			}
+		}
+	}
 	if (c.ethdown === 0) {
 		c.ethdown++;
 		users[u].ethdown++;
@@ -99,9 +117,14 @@ $('button.sell-ethdown').on('click', () => {
 	updateDivider();
 	const ratio = amount / c.ethdown;
 	const ethAmount = c.divider * ratio;
-	// if (c.eth !== c.divider && c.divider !== 0) {
-	// 	if ((c.eth-c.divider)/(c.divider-ethAmount) > maxRatio) return;
-	// }
+	if (enableProtection) {
+		if (c.eth !== c.divider && c.divider !== 0) {
+			if ((c.eth-c.divider)/(c.divider-ethAmount) > maxRatio) {
+				window.alert("This withdrawal has been prevented because it would cause the pool to exceed the maximum ratio.")
+				return;
+			}
+		}
+	}
 	users[u].eth += ethAmount;
 	c.eth -= ethAmount;
 	users[u].ethdown -= amount;
@@ -136,6 +159,10 @@ const updateDivider = () => {
 
 // Rest of code is just for testing purposes
 
+$('#enable-protection').change(function() {
+	enableProtection = this.checked;
+})
+
 const fixDecimals = () => {
 	price = parseFloat(price.toFixed(3));
 	c.eth = parseFloat(c.eth.toFixed(3));
@@ -162,6 +189,8 @@ const User = (name, eth) => {
 users.push(User('Alice', 100));
 users.push(User('Bob', 100));
 users.push(User('Charlie', 1));
+users.push(User('Daniel', 1));
+users.push(User('Ellie', 1));
 
 const updateDOM = () => {
 	$('input.price').val(price);
