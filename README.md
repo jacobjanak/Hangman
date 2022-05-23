@@ -14,4 +14,9 @@ Other decentralized tokens suffer because they need to get liquidity from an out
 
 ### Solidifi is the only decentralized leveraged token that doesn't suffer from decay.
 
-To use Solidifi, first visit [the website](https://jacobjanak.github.io/solidifi/). You will need MetaMask or another Ethereum wallet installed. Then, you can deposit ETH into the contract. You must decide whether you think ETH's price will go up or down. If you guess correctly, you will be able to withdraw more ETH than you originally deposited. If you guess wrong, you will lose some of your ETH, but only if you choose to withdraw. You can keep your ETH in the contract for as long as you want without any holding fees, rollover fees, or risk of liquidation.
+To use Solidifi, first visit [the website](https://jacobjanak.github.io/solidifi/). You will need MetaMask or another Ethereum wallet installed. Then, you can deposit ETH into the contract (don't worry, you can get free test ETH by scrolling down to the bottom of the website). You must decide whether you think ETH's price will go up or down. If you guess correctly, you will be able to withdraw more ETH than you originally deposited. If you guess wrong, you will lose some of your ETH, but only if you choose to withdraw. You can keep your ETH in the contract for as long as you want without any holding fees, rollover fees, or risk of liquidation.
+
+So, why is it called Solidifi?
+1. The opposite of liquidate is solidify.
+2. It is a DeFi application.
+3. The smart contract was built with Solidity.
