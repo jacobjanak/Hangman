@@ -4,9 +4,9 @@
 
 You can view the code for the Solidifi smart contract [here](./contract/contract.sol). It is currently deployed on the Ethereum blockchain's Rinkeby test network. You can see the contract at its address via [EtherScan](https://rinkeby.etherscan.io/address/0xEcb6f4CE53a36943B801659c9719d84eca970eD6).
 
-### Solidifi is a protocol for a better decentralized leveraged token.
-
 For the best information, please read the [Solidifi whitepaper](./whitepaper.pdf).
+
+### Solidifi is a protocol for a better decentralized leveraged token.
 
 The leveraged trading market is a multi-billion market. One of the newest developments in leveraged trading is the leveraged token. Leveraged tokens offer investors the ability to use leverage without the risk of liquidation. While the idea of leveraged tokens might seem great on paper, they tend to work poorly in practice. Centralized leveraged tokens suffer from regulation and a lack of transparency in their protocols. Decentralized leveraged tokens suffer from decay over time. These issues might not deter short-term investors, but they prevent leveraged tokens from being viable as a long-term investment. Without long-term viability, leveraged tokens are essentially useless, as they would provide no real advantages over other forms of leveraged trading.
 
