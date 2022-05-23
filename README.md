@@ -2,6 +2,8 @@
 
 # Solidifi
 
+You can view the code for the Solidifi smart contract [here](./contract/contract.sol). It is currently deployed on the Ethereum blockchain's Rinkeby test network. You can see the contract at its address via [EtherScan](https://rinkeby.etherscan.io/address/0xEcb6f4CE53a36943B801659c9719d84eca970eD6).
+
 ### Solidifi is a protocol for a better decentralized leveraged token.
 
 For the best information, please read the [Solidifi whitepaper](./whitepaper.pdf).
