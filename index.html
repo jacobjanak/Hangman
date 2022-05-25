@@ -62,9 +62,14 @@
     </nav>
 
     <!-- No wallet alert -->
-    <div class="alert alert-danger alert-dismissible fade show text-center mb-0">
+    <div id="no-wallet-alert" class="alert alert-danger alert-dismissible fade show text-center mb-0">
       You don't have an Ethereum wallet installed. Some features of this site won't work.
       <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+    <!-- Wrong network alert -->
+    <div id="wrong-network-alert" class="alert alert-primary fade show text-center mb-0">
+      Solidifi is only available on Ethereum's Rinkeby test network. <a id="switch-network" href="#" class="alert-link">Click here to switch networks.</a>
     </div>
 
     <!-- Main page -->

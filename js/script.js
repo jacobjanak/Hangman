@@ -160,7 +160,7 @@ $('.connect-wallet').on('click', function(e) {
 			$('.address-tooltip').attr('data-bs-original-title', walletAddress);
 			$('.address-tooltip').tooltip();
 
-			if (ethereum.chainId != contract.chainId) {
+			if (ethereum.chainId !== contract.chainId) {
 				switchChain(contract.chainId, function() {
 					$('#no-submit').hide();
 					$('#submit').show();
@@ -173,6 +173,14 @@ $('.connect-wallet').on('click', function(e) {
 		});
 	}
 });
+
+// Switch user's wallet to correct ethereum network
+$('#switch-network').on('click', function() {
+	switchChain(contract.chainId, function() {
+		$('#wrong-network-alert').hide();
+		getContractData();
+	})
+})
 
 $('.switch-button-checkbox').change(function() {
     if (this.checked) {
@@ -289,8 +297,12 @@ $(document).ready(function() {
 
 	// get total eth amount from contract
 	if (hasMetamask()) {
-		loadContractData(true);
+		if (ethereum.chainId === contract.chainId) {
+			loadContractData(true);
+		} else {
+			$('#wrong-network-alert').show();
+		}
 	} else {
-		$('.alert').show();
+		$('#no-wallet-alert').show();
 	}
 });
