@@ -162,6 +162,7 @@ $('.connect-wallet').on('click', function(e) {
 
 			if (ethereum.chainId !== contract.chainId) {
 				switchChain(contract.chainId, function() {
+					$('#wrong-network-alert').hide();
 					$('#no-submit').hide();
 					$('#submit').show();
 					loadContractData(true);;
