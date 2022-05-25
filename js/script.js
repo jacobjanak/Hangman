@@ -164,7 +164,7 @@ $('.connect-wallet').on('click', function(e) {
 				switchChain(contract.chainId, function() {
 					$('#no-submit').hide();
 					$('#submit').show();
-					getContractData();
+					loadContractData(true);;
 				})
 			} else {
 				$('#no-submit').hide();
@@ -178,7 +178,7 @@ $('.connect-wallet').on('click', function(e) {
 $('#switch-network').on('click', function() {
 	switchChain(contract.chainId, function() {
 		$('#wrong-network-alert').hide();
-		getContractData();
+		loadContractData(true);
 	})
 })
 
